@@ -69,15 +69,18 @@ module.exports = View.extend({
     },
     editPrimary: function (e) {
         e.preventDefault(); // prevent browser right-mouse button menu from opening
-        app.trigger('page', new FacetsEditPage({model: this.model.primary}));
+        if(this.model.primary) 
+            app.trigger('page', new FacetsEditPage({model: this.model.primary}));
     },
     editSecondary: function (e) {
         e.preventDefault(); // prevent browser right-mouse button menu from opening
-        app.trigger('page', new FacetsEditPage({model: this.model.secondary}));
+        if(this.model.secondary) 
+            app.trigger('page', new FacetsEditPage({model: this.model.secondary}));
     },
     editTertiary: function (e) {
         e.preventDefault(); // prevent browser right-mouse button menu from opening
-        app.trigger('page', new FacetsEditPage({model: this.model.tertiary}));
+        if(this.model.tertiary) 
+            app.trigger('page', new FacetsEditPage({model: this.model.tertiary}));
     },
     changePrimary:  function (newPrimary) {
         this.model.primary = newPrimary;
