@@ -4,15 +4,6 @@ var templates = require('../templates');
 module.exports = View.extend({
     template: templates.includes.facetseditbasevalue,
     bindings: {
-        'model.isTime': {
-            type: 'toggle',
-            hook: 'base-value-time-panel',
-        },
-        'model.isNetwork': {
-            type: 'toggle',
-            hook: 'base-value-bccessor-panel',
-        },
-
         'model.accessor': {
             type: 'value',
             hook: 'base-value-accessor-input',
@@ -35,25 +26,6 @@ module.exports = View.extend({
             hook: 'base-value-kind-math',
             name: 'checked',
         },
-
-        'model.base_value_time_format': {
-            type: 'value',
-            hook: 'base-value-time-format-input',
-        },
-        'model.base_value_time_zone': {
-            type: 'value',
-            hook: 'base-value-time-zone-input',
-        },
-        'model.isDatetime': {
-            type: 'booleanAttribute',
-            hook: 'base-value-time-type-datetime-input',
-            name: 'checked',
-        },
-        'model.isDuration': {
-            type: 'booleanAttribute',
-            hook: 'base-value-time-type-duration-input',
-            name: 'checked',
-        },
     },
     events: {
         // events for: base-value
@@ -72,21 +44,6 @@ module.exports = View.extend({
         },
         'click [data-hook~=base-value-kind-math]': function () {
             this.model.kind = 'math';
-        },
-
-        // events for: base-value-time
-        'change [data-hook~=base-value-time-format-input]': function () {
-            this.model.base_value_time_format = this.queryByHook( 'base-value-time-format-input' ).value;
-        },
-        'change [data-hook~=base-value-time-zone-input]': function () {
-            this.model.base_value_time_zone = this.queryByHook( 'base-value-time-zone-input' ).value;
-        },
-
-        'click [data-hook~=base-value-time-type-datetime-input]': function () {
-            this.model.base_value_time_type = 'datetime';
-        },
-        'click [data-hook~=base-value-time-type-duration-input]': function () {
-            this.model.base_value_time_type = 'duration';
         },
     },
 });

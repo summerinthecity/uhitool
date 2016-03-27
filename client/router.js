@@ -1,7 +1,6 @@
 var app = require('ampersand-app');
 var Router = require('ampersand-router');
 var HomePage = require('./pages/home');
-var DatasetsPage = require('./pages/datasets');
 var FacetsPage = require('./pages/facets');
 var AnalyzePage = require('./pages/analyze');
 
@@ -19,12 +18,6 @@ module.exports = Router.extend({
     // ------- ROUTE HANDLERS ---------
     home: function () {
         app.trigger('page', new HomePage({
-            model: app.me
-        }));
-    },
-
-    datasets: function () {
-        app.trigger('page', new DatasetsPage({
             model: app.me
         }));
     },

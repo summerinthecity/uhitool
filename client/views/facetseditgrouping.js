@@ -15,10 +15,6 @@ module.exports = View.extend({
             type: 'toggle',
             hook: 'grouping-continuous-panel',
         },
-        'model.displayTime': {
-            type: 'toggle',
-            hook: 'grouping-time-panel',
-        },
         
         // Bindings for: grouping-general
         'model.minval_astext': {
@@ -56,11 +52,6 @@ module.exports = View.extend({
             name: 'checked',
         },
 
-        // Bindings for: grouping-time
-        'model.grouping_time_format': {
-            type: 'value',
-            hook: 'grouping-time-format-input',
-        },
     },
     events: {
         // events for: grouping
@@ -85,9 +76,6 @@ module.exports = View.extend({
         },
         'click [data-hook~=grouping-continuous-log-input]': function () {
             this.model.grouping_continuous = 'log';
-        },
-        'change [data-hook~=grouping-time-format-input]': function () {
-            this.model.grouping_time_format = this.queryByHook( 'grouping-time-format-input' ).value;
         },
     }
 });

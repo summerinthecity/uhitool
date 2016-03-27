@@ -41,6 +41,10 @@ module.exports = ContentView.extend({
                     if( currentValue.key[1] == util.misval ) {
                         currentValue.key[1] = that.model.secondary.minval - 1.0;
                     }
+                    // dont plot empty groups
+                    if( currentValue.value.count === 0) {
+                        currentValue.key[1] = that.model.secondary.minval - 1.0;
+                    }
                 });
                 return all;
             }

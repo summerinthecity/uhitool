@@ -47,16 +47,15 @@ module.exports = PageView.extend({
             d3.json(app.me.data_url, function (error,json) {
                 if (error) return console.warn(error);
                 window.app.crossfilter = crossfilter(json);
-                console.log("Data loaded");
             });
         };
 
         reader.onloadend = function (evt) {
-            console.log("Done", evt);
+            // console.log("Done", evt);
         };
 
         reader.onerror = function (evt) {
-            console.log("Error", evt);
+            console.log("Error loading session", evt);
         };
 
         reader.readAsText(uploadedFile);

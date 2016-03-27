@@ -4,7 +4,6 @@ var templates = require('../templates');
 var facetsEditGeneralView = require('../views/facetseditgeneral');
 var facetsEditTypeView = require('../views/facetsedittype');
 var facetsEditBasevalueView = require('../views/facetseditbasevalue');
-var facetsEditTransformView = require('../views/facetsedittransform');
 var facetsEditGroupingView = require('../views/facetseditgrouping');
 var facetsEditReductionView = require('../views/facetseditreduction');
 
@@ -34,15 +33,6 @@ module.exports = PageView.extend({
             hook: 'facets-edit-basevalue',
             prepareView: function (el) {
                 return new facetsEditBasevalueView({
-                    el: el,
-                    model: this.model
-                });
-            }
-        },
-        transform: {                         
-            hook: 'facets-edit-transform',
-            prepareView: function (el) {
-                return new facetsEditTransformView({
                     el: el,
                     model: this.model
                 });
