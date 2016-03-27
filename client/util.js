@@ -133,46 +133,8 @@ var dxGlue1d = function (facetA,facetB) {
     }; 
 };
 
-// Usecase: boxplot
-// FIXME: currently, boxplots are slow
-//  A continuous or categorial
-//  B continuous (categorial untested, will probably crash dcjs)
-// Dataformat:
-//  [ {key: facetA.group(d), value: [ d0, d1, d2, d3, ... ] }, ... ]
-var dxGlueAwithBs = function (facetA,facetB) {
-    var dimension = window.app.crossfilter.dimension(facetA.value);
-    var group = dimension.group(facetA.group);
 
-    var valueFn = facetB.value;
-
-    group.reduce(
-        function(p,v) {
-            var value = valueFn(v); 
-            if(value!=misval) {
-                p.push(valueFn(v));
-            }
-            return p;
-        },
-        function(p,v) {
-            var value = valueFn(v); 
-            if(value!=misval) {
-                p.splice(p.indexOf(valueFn(v)), 1);
-            }
-            return p;
-        },
-        function() {
-            return [];
-        }
-    );
-
-    return {
-        dimension: dimension,
-        group: group,
-    }; 
-};
-
-
-// Usecase: scatterplot correlationplot
+// Usecase: scatterplot
 //  A continuous or categorial         (x-axis)
 //  B continuous or categorial         (y-axis)
 //  C continuous [default f(d)=1]      (z-axis)
@@ -368,6 +330,5 @@ module.exports = {
     dxDataGet: dxDataGet,
     dxGetCategories: dxGetCategories,
     dxGlueAbyCatB: dxGlueAbyCatB,
-    dxGlueAwithBs: dxGlueAwithBs,
     misval: misval,
 };

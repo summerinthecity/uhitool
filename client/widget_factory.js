@@ -35,11 +35,6 @@ var widgets = new widgetCollection([
         newView:   require('./views/heatmap.js')
     },
     {
-        modelType: "correlation",
-        newModel:  require('./models/correlation.js'),
-        newView:   require('./views/correlation.js')
-    },
-    {
         modelType: "piechart",
         newModel:  require('./models/piechart.js'),
         newView:   require('./views/piechart.js')
@@ -53,11 +48,6 @@ var widgets = new widgetCollection([
         modelType: "scatterplot",
         newModel:  require('./models/scatterplot.js'),
         newView:   require('./views/scatterplot.js')
-    },
-    {
-        modelType: "boxplot",
-        newModel:  require('./models/boxplot.js'),
-        newView:   require('./views/boxplot.js')
     },
 ]); 
 
