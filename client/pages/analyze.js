@@ -1,6 +1,5 @@
 var app = require('ampersand-app');
 var View = require('ampersand-view');
-var bookmarksView = require('../views/bookmarks');
 var PageView = require('./base');
 var templates = require('../templates');
 var widgetFrameView = require('../views/widget-frame');
@@ -67,10 +66,4 @@ module.exports = PageView.extend({
         // make sure all widgets are in sync
         dc.redrawAll();
     },
-    subviews: {
-        widget: {
-            hook: 'bookmarks',
-            constructor: bookmarksView,
-        },
-    }
 });

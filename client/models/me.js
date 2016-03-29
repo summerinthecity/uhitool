@@ -12,6 +12,5 @@ module.exports = AmpersandModel.extend({
     collections: { 
         facets: Facets,
         widgets: Widgets,
-        bookmarked: Widgets,
     },
 });
