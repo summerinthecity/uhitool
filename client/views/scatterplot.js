@@ -55,7 +55,7 @@ module.exports = ContentView.extend({
         // elasticX : when set to true, and the data contains Infinity, goes bonkers.
         var chart = dc.scatterPlot(this.queryByHook('scatterplot'));
         chart
-            .margins({top: 10, right: 50, bottom: 30, left: 75})
+            .margins({top: 10, right: 10, bottom: 30, left: 100})
             .brushOn(true)
             .mouseZoomable(false)
             .elasticX(false)

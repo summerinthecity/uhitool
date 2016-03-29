@@ -35,7 +35,7 @@ var recalculateColors = function (view) {
     // Color by facet value
     if(view.model && view.model.tertiary) {
         records = util.dxDataGet();
-        var scale = chroma.scale(["#022A08", "#35FE57"]);
+        var scale = chroma.scale( chroma.brewer.YlOrRd );
 
         var min = view.model.tertiary.minval;
         var max = view.model.tertiary.maxval;

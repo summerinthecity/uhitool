@@ -35,7 +35,7 @@ module.exports = ContentView.extend({
         var chart = dc.barChart(this.queryByHook('barchart'));
         var that = this; // used in callback
         chart
-            .margins({top: 10, right: 50, bottom: 30, left: 75})
+            .margins({top: 10, right: 10, bottom: 30, left: 100})
             .outerPadding(1.0)
             .brushOn(true)
             .mouseZoomable(false)
