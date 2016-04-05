@@ -26,11 +26,11 @@ app.extend({
     init: function() {
 
         // Load the actual data, and add it to the crossfilter when ready
-        d3.json('data/data.json', function (error,json) {
+        d3.json('./data/data.json', function (error,json) {
 
             window.app.crossfilter = crossfilter(json);
 
-            d3.json('data/session.json', function (error,json) {
+            d3.json('./data/session.json', function (error,json) {
                 window.app.me.set(json);
             }); 
 
