@@ -10,7 +10,7 @@ module.exports = PageView.extend({
     pageTitle: 'home',
     template: templates.pages.home,
     events: {
-        'click [data-hook~=session-download]': 'downloadSession',
+        'click [data-hook~=download]': 'downloadSession',
         'change [data-hook~=session-upload-input]': 'uploadSession',
     },
     downloadSession: function () {
@@ -18,15 +18,14 @@ module.exports = PageView.extend({
 
         var json = JSON.stringify(app.me.toJSON());
         var blob = new Blob([json], {type: "application/json"});
-        var url = URL.createObjectURL(blob);
+        var url = window.URL.createObjectURL(blob);
 
-        var a = this.queryByHook('session-download');
+        var a = this.queryByHook('download');
         a.download = "session.json";
-        a.href = url;
+        a.href        = url;
 
-        // FIXME: life cycle of the object url
-        // var objectURL = window.URL.createObjectURL(fileObj);
-        // window.URL.revokeObjectURL(objectURL);
+        // FIXME: should clean up url:
+        // window.URL.revokeObjectURL(url);
     },
     uploadSession: function () {
         var fileLoader = this.queryByHook('session-upload-input');
@@ -34,19 +33,12 @@ module.exports = PageView.extend({
 
         var reader = new FileReader();
 
+        // NOTE: for the release, remove the option of custom data sets,
+        // this simplifies adding/removing data from crossfilter and dcjs
         reader.onload = function (evt) {
-
             var data = JSON.parse(evt.target.result);
             app.me.set(data);
-
-            // FIXME: more subtle approach? and does this free all dimensions and groups?
-            delete window.app.crossfilter;
-
-            // Load the actual data, and add it to the crossfilter when ready
-            d3.json(app.me.data_url, function (error,json) {
-                if (error) return console.warn(error);
-                window.app.crossfilter = crossfilter(json);
-            });
+            app.navigate('/analyze');
         };
 
         reader.onerror = function (evt) {

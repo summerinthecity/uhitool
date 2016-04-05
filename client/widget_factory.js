@@ -62,7 +62,19 @@ module.exports = {
     newModel: function (attrs,options) {
         var entry = widgets.get(attrs.modelType);
         var constructor = entry.newModel;
-        return new constructor(attrs,options);
+        var model = new constructor(attrs,options);
+
+        // BUG: I dont fully understend the way dcjs charts the filters on the crossfilter dimensions
+        //      When loading a session containing widgets (dcjs charts) with fitlers,
+        //      the chart shows filtered ranges, but the data is *not* filtered.
+        //      Remove the functionality for the release.
+        if (model.selection) {
+            model.selection = [];
+        }
+        if (model.range) {
+            model.range = [];
+        }
+        return model;
     }
 };
 

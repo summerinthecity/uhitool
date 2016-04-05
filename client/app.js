@@ -25,15 +25,15 @@ app.extend({
     // This is where it all starts
     init: function() {
 
-        window.app.crossfilter = crossfilter([]);
-
-        d3.json('data/session.json', function (error,json) {
-            app.me.set(json);
-        }); 
-
         // Load the actual data, and add it to the crossfilter when ready
         d3.json('data/data.json', function (error,json) {
-            window.app.crossfilter.add(json);
+
+            window.app.crossfilter = crossfilter(json);
+
+            d3.json('data/session.json', function (error,json) {
+                window.app.me.set(json);
+            }); 
+
         });
 
         // Create and attach our main view
